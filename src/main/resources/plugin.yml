@@ -1,0 +1,12 @@
+name: ${project.name}
+description: ${project.description}
+
+main: tsp.demonicexpansion.DemonicExpansion
+version: ${project.version}
+api-version: '1.21'
+author: Silent
+depend: [Slimefun]
+
+commands:
+  dx:
+    usage: /dx
