@@ -62,6 +62,7 @@ public class DemonicEntity {
             entity.setCustomNameVisible(true);
 
             preSpawn(entity);
+            DemonicExpansion.getInstance().getEntityManager().track(entity);
 
             DemonicExpansion.getInstance().getLog().trace("Spawned entity with TYPE: " + entity.getType().name() +  " | UUID:" + entity.getUniqueId().toString() + " | IMPL: " + getKey().toString());
         });

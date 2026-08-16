@@ -14,7 +14,8 @@ import tsp.demonicexpansion.implementation.recipe.Recipes;
 
 public class DemonicBoots extends DemonicArmor {
 
-    private final ItemSetting<Integer> radiusSetting = new IntRangeSetting(this, "radius", 1, 2, 100);
+    private static final int MAXIMUM_SAFE_RADIUS = 8;
+    private final ItemSetting<Integer> radiusSetting = new IntRangeSetting(this, "radius", 1, 2, MAXIMUM_SAFE_RADIUS);
 
     public DemonicBoots() {
         super(DemonicExpansion.getInstance().getItems().DEMONIC_BOOTS, Recipes.DEMONIC_BOOTS);
@@ -22,9 +23,14 @@ public class DemonicBoots extends DemonicArmor {
     }
 
     @Override
+    public boolean requiresPositionChange() {
+        return true;
+    }
+
+    @Override
     public void whileWearing(LivingEntity entity) {
         Block stoodBlock = entity.getLocation().clone().subtract(0, 1, 0).getBlock();
-        int radius = radiusSetting.getValue();
+        int radius = normalizeRadius(radiusSetting.getValue());
 
         // Thanks Sefiraat for this part, heavily tweaked to fit this addon
         for (int x = -radius; x <= radius; x++) {
@@ -34,12 +40,12 @@ public class DemonicBoots extends DemonicArmor {
                 // TODO: Find a way to stop entities from possibly being able to use this to grief builds with this
                 if (entity instanceof Player p) {
                     if (!Slimefun.getProtectionManager().hasPermission(p, b, Interaction.PLACE_BLOCK)) {
-                        return;
+                        continue;
                     }
 
                     if (b.getType() == Material.LAVA && b.getBlockData() instanceof Levelled l) {
                         if (l.getLevel() == 0) {
-                            b.setType(Material.OBSIDIAN);
+                            b.setType(Material.OBSIDIAN, false);
                             // The obsidian doesn't turn back into lava, this is intentional!
                         }
                     }
@@ -47,6 +53,10 @@ public class DemonicBoots extends DemonicArmor {
                 // Lava walker will only work on players, it is *possible* that entities can be abused to grief with it.
             }
         }
+    }
+
+    static int normalizeRadius(int configured) {
+        return Math.max(1, Math.min(MAXIMUM_SAFE_RADIUS, configured));
     }
 
 }

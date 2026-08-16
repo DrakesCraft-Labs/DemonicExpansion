@@ -11,6 +11,13 @@ public class AbstractArmor extends AbstractItem {
         super(item, recipe);
     }
 
+    /**
+     * Indicates that this effect only needs recalculation after crossing a block boundary.
+     */
+    public boolean requiresPositionChange() {
+        return false;
+    }
+
     public void whileWearing(LivingEntity entity) {}
 
 }

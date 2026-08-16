@@ -1,8 +1,9 @@
-# How often a "ticker" ticks in milliseconds
-# It is not recommended setting this above 20!
+# Periodos de las tareas en ticks de Minecraft (20 ticks = 1 segundo).
 ticker:
-  entity: 1
-  armor: 1
+  # Las entidades demoníacas activas se actualizan una vez por segundo.
+  entity: 20
+  # Se limita internamente a un minimo de 5 para proteger el hilo principal.
+  armor: 5
 
 # Debug Mode
 debug: false

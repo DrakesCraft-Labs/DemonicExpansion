@@ -43,6 +43,17 @@ misma versión que corre en producción, para que ninguna de esas referencias re
 **Todo en español.** El fork del que partimos tenía el catálogo en chino; nombres, descripciones
 y mensajes están traducidos.
 
+**Ticker de armadura acotado.** El original recorría cada ser vivo de todos los mundos cada tick,
+incluidos animales de granjas y mobs de chunks cargados. Ahora solo procesa jugadores conectados
+cada 5 ticks. El caminante de lava recalcula el terreno únicamente cuando el jugador cambia de
+bloque, desactiva física innecesaria y limita su radio configurable a 8 para evitar hasta 40.401
+consultas de bloques y protecciones por paso. El radio normal sigue siendo 2 y los demás efectos
+se renuevan con la misma continuidad visual.
+
+**Registro de criaturas por eventos.** El ticker de entidades ya no busca identificadores PDC en
+todos los mobs 20 veces por segundo. Las criaturas demoníacas se registran al generarse o cargar
+su chunk, se retiran al morir o descargarse y solo ellas reciben su actualización periódica.
+
 El paquete propio del addon y sus nombres de clase se dejan intactos, para poder seguir comparando
 con el original.
 
