@@ -8,4 +8,5 @@ ticker:
 # Debug Mode
 debug: false
 
-auto-update: true
+# Conservado por compatibilidad de configuración; las descargas automáticas están deshabilitadas.
+auto-update: false

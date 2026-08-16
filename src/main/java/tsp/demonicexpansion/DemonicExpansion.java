@@ -85,7 +85,7 @@ public class DemonicExpansion extends SmartPlugin implements SlimefunAddon {
     @Nullable
     @Override
     public String getBugTrackerURL() {
-        return "todo";
+        return "https://github.com/DrakesCraft-Labs/DemonicExpansion/issues";
     }
 
     public Logger getLog() {
