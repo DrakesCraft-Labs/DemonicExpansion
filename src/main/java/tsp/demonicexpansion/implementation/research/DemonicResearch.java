@@ -1,6 +1,6 @@
 package tsp.demonicexpansion.implementation.research;
 
-import io.github.thebusybiscuit.slimefun4.api.researches.Research;
+import com.github.drakescraft_labs.slimefun4.api.researches.Research;
 import org.bukkit.NamespacedKey;
 import tsp.demonicexpansion.DemonicExpansion;
 

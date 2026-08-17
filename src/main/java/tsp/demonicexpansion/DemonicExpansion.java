@@ -1,6 +1,6 @@
 package tsp.demonicexpansion;
 
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import com.github.drakescraft_labs.slimefun4.api.SlimefunAddon;
 import net.guizhanss.guizhanlib.updater.GuizhanBuildsUpdater;
 import org.bukkit.plugin.java.JavaPlugin;
 import tsp.demonicexpansion.command.DXCommand;

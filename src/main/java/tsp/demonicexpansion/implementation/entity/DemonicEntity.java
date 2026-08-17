@@ -10,7 +10,7 @@ import tsp.demonicexpansion.DemonicExpansion;
 import tsp.smartplugin.event.LivingEntityDamageByLivingEntityEvent;
 import tsp.smartplugin.utils.AttributeUtils;
 
-import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import com.github.drakescraft_labs.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import tsp.smartplugin.utils.SerializationUtils;
 import tsp.smartplugin.utils.StringUtils;
 import tsp.smartplugin.utils.Validate;

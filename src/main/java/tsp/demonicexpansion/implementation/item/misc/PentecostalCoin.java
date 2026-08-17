@@ -1,8 +1,8 @@
 package tsp.demonicexpansion.implementation.item.misc;
 
-import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
-import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
+import com.github.drakescraft_labs.slimefun4.api.events.PlayerRightClickEvent;
+import com.github.drakescraft_labs.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import com.github.drakescraft_labs.slimefun4.libraries.paperlib.PaperLib;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -39,7 +39,7 @@ public class PentecostalCoin extends AbstractItem {
         if (player.isSneaking()) {
             Optional<Block> block = event.getClickedBlock();
             if (block.isEmpty()) {
-                PlayerUtils.sendMessage(player, "&c您必须右击所要定位的方块!");
+                PlayerUtils.sendMessage(player, "&cDebes hacer clic derecho en el cuadrado al que deseas apuntar.!");
                 return;
             }
 
@@ -55,10 +55,10 @@ public class PentecostalCoin extends AbstractItem {
                 Location location = block.get().getLocation();
                 PersistentDataAPI.setString(meta, key, SerializationUtils.serializeLocation(location));
                 event.getItem().setItemMeta(meta);
-                PlayerUtils.sendMessage(player, "&7已将定位设置为: &ex=" + location.getBlockX() + " y=" + location.getBlockY() + " z=" + location.getBlockZ());
+                PlayerUtils.sendMessage(player, "&7Orientación establecida en: &ex=" + location.getBlockX() + " y=" + location.getBlockY() + " z=" + location.getBlockZ());
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1f, 1f);
             } else {
-                PlayerUtils.sendMessage(player, "&c您无法在此世界设置位置!");
+                PlayerUtils.sendMessage(player, "&cNo puedes establecer la ubicación en este mundo.!");
                 event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_ANVIL_BREAK, 1f, 1f);
             }
             return;
@@ -78,20 +78,20 @@ public class PentecostalCoin extends AbstractItem {
                 ItemUtils.use(event.getItem(), 60, cd -> {
                     if (PaperLib.isPaper()) {
                         PaperLib.teleportAsync(player, SerializationUtils.deserializeLocation(serialized.get()), PlayerTeleportEvent.TeleportCause.PLUGIN).whenComplete((r, ex) -> {
-                            PlayerUtils.sendMessage(player, "&5芜湖!");
+                            PlayerUtils.sendMessage(player, "&5Wuhu!");
                             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
                         });
                     } else {
                         player.teleport(SerializationUtils.deserializeLocation(serialized.get()), PlayerTeleportEvent.TeleportCause.PLUGIN);
                         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
                     }
-                }, left -> PlayerUtils.sendMessage(event.getPlayer(), "&c您不能将此替换为另一个: &e" + left + "s"));
+                }, left -> PlayerUtils.sendMessage(event.getPlayer(), "&cNo puedes reemplazar esto por otro.: &e" + left + "s"));
             } else {
-                PlayerUtils.sendMessage(player, "&c您还没有设置要返回的位置!");
+                PlayerUtils.sendMessage(player, "&cNo has establecido una ubicación a la que regresar!");
                 event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_ANVIL_BREAK, 1f, 1f);
             }
         } else {
-            PlayerUtils.sendMessage(player, "&c该物品无法在此世界使用!");
+            PlayerUtils.sendMessage(player, "&cEste artículo no se puede utilizar en este mundo.!");
             event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_ANVIL_BREAK, 1f, 1f);
         }
     }
