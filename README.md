@@ -1,6 +1,16 @@
-<p align="center"><img src="docs/banner.svg" alt="DemonicExpansion" width="100%"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/DrakesCraft-Labs/DemonicExpansion/main/banner.svg" alt="DemonicExpansion" width="100%"></p>
 
 # DemonicExpansion
+
+> ### 🏰 ¡Únete a la Comunidad Oficial de DrakesCraft!
+> 
+> * 🎮 **IP del Servidor**: `play.drakescraft.net` *(Java 1.21.11 & Bedrock)*
+> * 💬 **Discord Oficial**: [discord.gg/drakescraft](https://discord.gg/rR7FbfCt9Y)
+> * 🌐 **Web & Guía**: [drakescraft.net](https://drakescraft.net) — 🛒 **Tienda**: [tienda.drakescraft.net](https://tienda.drakescraft.net)
+> 
+> *¡Juega con este addon y más de 80 expansiones optimizadas en vivo en nuestra network de supervivencia técnica!*
+
+---
 
 Criaturas y equipo demoníaco para el Nether, adaptado al ecosistema Slimefun de **DrakesCraft**
 (Paper/Purpur 1.21.11, Java 21).
