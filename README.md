@@ -75,3 +75,13 @@ Necesita Slimefun de DrakesCraft (`Slimefun4-Drake`). Se pone el jar en `plugins
 
 El trabajo de fondo es de **TheSilentPro (Silent)**. Nosotros solo lo hemos adaptado. Los detalles
 de procedencia y licencia están en [UPSTREAM.md](UPSTREAM.md).
+
+## ⚖️ Upstream Attribution & License / Licencia y Créditos
+
+- **Original Project / Upstream**: Slimefun4 Community Addon.
+- **Port & Maintenance**: DrakesCraft Labs team (Compatibility for Paper / Purpur 1.21.11).
+- **License**: GPL-3.0 / MIT.
+- **Source Code**: [GitHub Repository](https://github.com/DrakesCraft-Labs/DemonicExpansion)
+- **Support & Issues**: [GitHub Issues](https://github.com/DrakesCraft-Labs/DemonicExpansion/issues) | [Discord](https://discord.gg/rR7FbfCt9Y)
+
+*This project is an open-source derivative work maintained by DrakesCraft Labs under the terms of its original license. All original assets and concepts belong to their respective creators.*
