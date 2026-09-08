@@ -64,6 +64,13 @@ se renuevan con la misma continuidad visual.
 todos los mobs 20 veces por segundo. Las criaturas demoníacas se registran al generarse o cargar
 su chunk, se retiran al morir o descargarse y solo ellas reciben su actualización periódica.
 
+**Vulcanes protegidos contra avalanchas.** Solo los magma cubes de aparición natural pueden
+convertirse en Vulcanes; las apariciones `CUSTOM`, de trial spawner y los descendientes
+`SLIME_SPLIT` quedan fuera. Los Vulcanes no se dividen ni participan en colisiones entre
+entidades, y al cargar un chunk se aplica la misma protección a ejemplares antiguos identificados
+por PDC o por su nombre legado. Así se conserva la criatura sin borrar mobs ni multiplicar el
+coste de colisiones del hilo principal.
+
 El paquete propio del addon y sus nombres de clase se dejan intactos, para poder seguir comparando
 con el original.
 

@@ -57,6 +57,7 @@ public class Vulcan extends DemonicEntity {
 
     @Override
     public void preSpawn(LivingEntity entity) {
+        entity.setCollidable(false);
         ((MagmaCube) entity).setSize(ThreadLocalRandom.current().nextInt(3, 7)); // 3-6
     }
 
