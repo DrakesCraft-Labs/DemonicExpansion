@@ -71,12 +71,19 @@ entidades, y al cargar un chunk se aplica la misma protección a ejemplares anti
 por PDC o por su nombre legado. Así se conserva la criatura sin borrar mobs ni multiplicar el
 coste de colisiones del hilo principal.
 
+**Clásico permanece vanilla.** Los mundos reservados de Clásico nunca sustituyen criaturas
+naturales por entidades demoníacas. Esta exclusión se aplica también cuando `config.yml` está
+vacío o procede de una versión anterior; `entity-replacements.excluded-worlds` permite ampliar
+la lista para otros mundos, pero no retirar la protección de Clásico.
+
 El paquete propio del addon y sus nombres de clase se dejan intactos, para poder seguir comparando
 con el original.
 
 ## Instalación
 
 Necesita Slimefun de DrakesCraft (`Slimefun4-Drake`). Se pone el jar en `plugins/` y listo.
+El build usa Java 21 y declara explícitamente el procesador de anotaciones de Lombok, por lo que
+también es reproducible desde Maven ejecutado sobre JDK recientes.
 
 ## Crédito
 

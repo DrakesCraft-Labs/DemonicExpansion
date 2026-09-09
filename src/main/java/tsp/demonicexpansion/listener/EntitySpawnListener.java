@@ -19,7 +19,16 @@ import cl.jackstar.smartplugin.handler.Handler;
 import cl.jackstar.smartplugin.utils.NumberUtils;
 import com.github.drakescraft_labs.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
+import java.util.List;
+import java.util.Set;
+
 public class EntitySpawnListener extends Handler {
+
+    private static final Set<String> PROTECTED_VANILLA_WORLDS = Set.of(
+        "clasico",
+        "clasico_nether",
+        "clasico_the_end"
+    );
 
     @EventHandler
     public void onSpawn(CreatureSpawnEvent event) {
@@ -74,16 +83,29 @@ public class EntitySpawnListener extends Handler {
         if (world == null || world.getEnvironment() != World.Environment.NETHER) {
             return false;
         }
-        return !DemonicExpansion.getInstance().getConfig()
-            .getStringList("entity-replacements.excluded-worlds")
-            .stream()
-            .anyMatch(excluded -> isExcludedWorldName(world.getName(), excluded));
+        return !isExcludedWorld(
+            world.getName(),
+            DemonicExpansion.getInstance().getConfig()
+                .getStringList("entity-replacements.excluded-worlds")
+        );
     }
 
     /** Comparación aislada para mantener la regla testeable sin arrancar Bukkit. */
     static boolean isExcludedWorldName(String worldName, String excludedWorld) {
         return worldName != null && excludedWorld != null
             && excludedWorld.equalsIgnoreCase(worldName);
+    }
+
+    /**
+     * Clásico permanece vanilla aunque el archivo de configuración esté vacío,
+     * corrupto o sea anterior a la opción excluded-worlds. La lista configurable
+     * sólo puede ampliar esta protección, nunca retirar los mundos reservados.
+     */
+    static boolean isExcludedWorld(String worldName, List<String> configuredWorlds) {
+        boolean protectedWorld = PROTECTED_VANILLA_WORLDS.stream()
+            .anyMatch(excluded -> isExcludedWorldName(worldName, excluded));
+        return protectedWorld || configuredWorlds != null && configuredWorlds.stream()
+            .anyMatch(excluded -> isExcludedWorldName(worldName, excluded));
     }
 
     static boolean isLegacyVulcanName(String customName, boolean customNameVisible) {
