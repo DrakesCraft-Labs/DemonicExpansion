@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.SlimeSplitEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
+import tsp.demonicexpansion.DemonicExpansion;
 import tsp.demonicexpansion.implementation.entity.Entities;
 import tsp.demonicexpansion.implementation.entity.DemonicEntity;
 import cl.jackstar.smartplugin.handler.Handler;
@@ -22,7 +23,7 @@ public class EntitySpawnListener extends Handler {
 
     @EventHandler
     public void onSpawn(CreatureSpawnEvent event) {
-        if (event.getLocation().getWorld().getEnvironment() == World.Environment.NETHER
+        if (isDemonicNether(event.getLocation().getWorld())
             && isEligibleReplacementSpawn(event.getSpawnReason())) {
             if (event.getEntity() instanceof WitherSkeleton) {
                 NumberUtils.chance(5, s -> {
@@ -62,6 +63,27 @@ public class EntitySpawnListener extends Handler {
 
     static boolean isEligibleReplacementSpawn(CreatureSpawnEvent.SpawnReason reason) {
         return reason == CreatureSpawnEvent.SpawnReason.NATURAL;
+    }
+
+    /**
+     * DemonicExpansion mejora sólo los mundos de juego que lo permiten. El tipo
+     * NETHER no basta: ``clasico_nether`` también es Nether, pero Clásico debe
+     * mantenerse vanilla y no puede recibir reemplazos de Vulcan/Reaper.
+     */
+    static boolean isDemonicNether(World world) {
+        if (world == null || world.getEnvironment() != World.Environment.NETHER) {
+            return false;
+        }
+        return !DemonicExpansion.getInstance().getConfig()
+            .getStringList("entity-replacements.excluded-worlds")
+            .stream()
+            .anyMatch(excluded -> isExcludedWorldName(world.getName(), excluded));
+    }
+
+    /** Comparación aislada para mantener la regla testeable sin arrancar Bukkit. */
+    static boolean isExcludedWorldName(String worldName, String excludedWorld) {
+        return worldName != null && excludedWorld != null
+            && excludedWorld.equalsIgnoreCase(worldName);
     }
 
     static boolean isLegacyVulcanName(String customName, boolean customNameVisible) {

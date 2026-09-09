@@ -24,4 +24,10 @@ class EntitySpawnListenerTest {
         assertFalse(EntitySpawnListener.isLegacyVulcanName("Vulcan II", true));
         assertFalse(EntitySpawnListener.isLegacyVulcanName(null, true));
     }
+
+    @Test
+    void excludedWorldNamesAreCaseInsensitive() {
+        assertTrue(EntitySpawnListener.isExcludedWorldName("clasico_nether", "Clasico_Nether"));
+        assertFalse(EntitySpawnListener.isExcludedWorldName("world_nether", "clasico_nether"));
+    }
 }

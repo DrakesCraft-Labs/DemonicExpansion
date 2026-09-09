@@ -5,6 +5,14 @@ ticker:
   # Se limita internamente a un minimo de 5 para proteger el hilo principal.
   armor: 5
 
+# Clásico es vanilla puro. Aunque ``clasico_nether`` tenga ambiente NETHER,
+# no debe convertir spawns naturales en entidades de DemonicExpansion.
+entity-replacements:
+  excluded-worlds:
+    - clasico
+    - clasico_nether
+    - clasico_the_end
+
 # Debug Mode
 debug: false
 
