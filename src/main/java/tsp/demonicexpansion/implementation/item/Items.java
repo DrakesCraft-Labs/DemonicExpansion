@@ -22,16 +22,16 @@ public class Items {
     public final DemonicItemStack DEMONIC_ESSENCE = new DemonicItemStack(
             "DEMONIC_ESSENCE",
             Material.PURPLE_DYE,
-            "&cCorazón de Demonio"
+            "&cDemonic Essence"
     );
 
     public final DemonicItemStack PENTECOSTAL_COIN = new DemonicItemStack(
             "PENTECOSTAL_COIN",
             Material.ORANGE_DYE,
-            "&cMoneda de Pentecostés",
+            "&cPentecostal Coin",
             "",
-            "&7Shift+clic derecho: fija la posición sobre el bloque (Mundo normal y Nether)",
-            "&7Clic derecho: te lleva al Nether y te devuelve al rato (60s)"
+            "&7Shift+Right Click: Link position to block (Overworld and Nether)",
+            "&7Right Click: Teleport to the Nether and back (60s)"
     );
 
     public final DemonicItemStack NAPALM = new DemonicItemStack(
@@ -45,33 +45,33 @@ public class Items {
     public final DemonicItemStack DEMONIC_HELMET = new DemonicItemStack(
             "DEMONIC_HELMET",
             Material.NETHERITE_HELMET,
-            "&cCasco Demoníaco",
+            "&cDemonic Helmet",
             "",
-            "&6Atisbo: &7te da &9Visión Nocturna"
+            "&6Glimpse: &7Grants &9Night Vision"
     );
 
     public final DemonicItemStack DEMONIC_CHESTPLATE = new DemonicItemStack(
             "DEMONIC_CHESTPLATE",
             Material.NETHERITE_CHESTPLATE,
-            "&cPeto Demoníaco",
+            "&cDemonic Chestplate",
             "",
-            "&6Ocultación: &7te da &6Resistencia al Fuego"
+            "&6Concealment: &7Grants &6Fire Resistance"
     );
 
     public final DemonicItemStack DEMONIC_LEGGINGS = new DemonicItemStack(
             "DEMONIC_LEGGINGS",
             Material.NETHERITE_LEGGINGS,
-            "&cGrebas Demoníacas",
+            "&cDemonic Leggings",
             "",
-            "&6Búsqueda: &7te da &cRegeneración II"
+            "&6Search: &7Grants &cRegeneration II"
     );
 
     public final DemonicItemStack DEMONIC_BOOTS = new DemonicItemStack(
             "DEMONIC_BOOTS",
             Material.NETHERITE_BOOTS,
-            "&cBotas Demoníacas",
+            "&cDemonic Boots",
             "",
-            "&6Caminante de Lava: &7convierte en obsidiana la lava de alrededor, para siempre"
+            "&6Lava Walker: &7Turns surrounding lava into obsidian permanently"
     );
 
     // Weapon
@@ -79,9 +79,9 @@ public class Items {
     public final DemonicItemStack DEVILS_RING = new DemonicItemStack(
             "DEVILS_RING",
             Material.RED_DYE,
-            "&cAnillo Demoníaco",
+            "&cDevil's Ring",
             "",
-            "&6Habilidad activa: &7ciega, debilita y prende fuego a los enemigos cercanos (60s)"
+            "&6Active Ability: &7Blinds, weakens and ignites nearby enemies (60s)"
     );
 
     // Machines
@@ -89,10 +89,10 @@ public class Items {
     public final DemonicItemStack THERMAL_GENERATOR = new DemonicItemStack(
             "THERMAL_GENERATOR",
             HeadTexture.GENERATOR,
-            "&cGenerador Demoníaco",
+            "&cDemonic Thermal Generator",
             "",
-            "&7Genera energía en el Nether",
-            "&7Hay que colocarlo sobre lava"
+            "&7Generates energy in the Nether",
+            "&7Must be placed on lava"
     );
 
     public void setup() {

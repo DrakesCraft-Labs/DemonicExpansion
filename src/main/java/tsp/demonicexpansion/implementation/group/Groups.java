@@ -12,7 +12,7 @@ public final class Groups {
 
     public static final ItemGroup MAIN = new ItemGroup(
             new NamespacedKey(DemonicExpansion.getInstance(), "group_main"),
-            new CustomItemStack(Material.MAGMA_CREAM, "&4Expansión Demoníaca", "", "&7Objetos")
+            new CustomItemStack(Material.MAGMA_CREAM, "&4Demonic Expansion", "", "&7Items")
     );
 
 }

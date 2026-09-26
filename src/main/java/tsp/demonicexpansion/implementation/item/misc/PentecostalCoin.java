@@ -39,7 +39,7 @@ public class PentecostalCoin extends AbstractItem {
         if (player.isSneaking()) {
             Optional<Block> block = event.getClickedBlock();
             if (block.isEmpty()) {
-                PlayerUtils.sendMessage(player, "&cTienes que hacer clic derecho sobre el bloque que quieras fijar!");
+                PlayerUtils.sendMessage(player, "&cYou must right click on the block you want to link!");
                 return;
             }
 
@@ -55,10 +55,10 @@ public class PentecostalCoin extends AbstractItem {
                 Location location = block.get().getLocation();
                 PersistentDataAPI.setString(meta, key, SerializationUtils.serializeLocation(location));
                 event.getItem().setItemMeta(meta);
-                PlayerUtils.sendMessage(player, "&7Posición fijada en: &ex=" + location.getBlockX() + " y=" + location.getBlockY() + " z=" + location.getBlockZ());
+                PlayerUtils.sendMessage(player, "&7Position linked to: &ex=" + location.getBlockX() + " y=" + location.getBlockY() + " z=" + location.getBlockZ());
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1f, 1f);
             } else {
-                PlayerUtils.sendMessage(player, "&cNo puedes fijar una posición en este mundo!");
+                PlayerUtils.sendMessage(player, "&cYou cannot link a position in this world!");
                 event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_ANVIL_BREAK, 1f, 1f);
             }
             return;
@@ -78,20 +78,20 @@ public class PentecostalCoin extends AbstractItem {
                 ItemUtils.use(event.getItem(), 60, cd -> {
                     if (PaperLib.isPaper()) {
                         PaperLib.teleportAsync(player, SerializationUtils.deserializeLocation(serialized.get()), PlayerTeleportEvent.TeleportCause.PLUGIN).whenComplete((r, ex) -> {
-                            PlayerUtils.sendMessage(player, "&5Ahi vamos!");
+                            PlayerUtils.sendMessage(player, "&5Here we go!");
                             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
                         });
                     } else {
                         player.teleport(SerializationUtils.deserializeLocation(serialized.get()), PlayerTeleportEvent.TeleportCause.PLUGIN);
                         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
                     }
-                }, left -> PlayerUtils.sendMessage(event.getPlayer(), "&cTodavia no puedes volver a usarlo: &e" + left + "s"));
+                }, left -> PlayerUtils.sendMessage(event.getPlayer(), "&cYou cannot use this yet: &e" + left + "s"));
             } else {
-                PlayerUtils.sendMessage(player, "&cTodavía no has fijado ninguna posición a la que volver!");
+                PlayerUtils.sendMessage(player, "&cYou have not linked a return position yet!");
                 event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_ANVIL_BREAK, 1f, 1f);
             }
         } else {
-            PlayerUtils.sendMessage(player, "&cEste objeto no se puede usar en este mundo!");
+            PlayerUtils.sendMessage(player, "&cThis item cannot be used in this world!");
             event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_ANVIL_BREAK, 1f, 1f);
         }
     }
